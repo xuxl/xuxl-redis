@@ -1,0 +1,10 @@
+server: 
+  port: 4003
+spring:
+  application:
+    name: redis-test
+  redis:
+    timeout: 5000
+    sentinel:
+      master: mymaster
+      nodes: 120.78.76.207:26379,120.78.76.207:26380,120.78.76.207:26381
