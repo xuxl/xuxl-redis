@@ -26,6 +26,26 @@
   
   <build>
 		<plugins>
+			<!-- 替换资源相关字符串 -->
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <executions>
+                    <execution>
+                        <id>replace-dockerfile</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                        <configuration>
+                            <file>${project.build.outputDirectory}/docker/Dockerfile</file>
+                            <regex>false</regex>
+                            <token>dockerfile.project.build.finalname</token>
+                            <value>${project.build.finalName}</value>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
